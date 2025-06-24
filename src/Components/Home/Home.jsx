@@ -31,7 +31,7 @@ export default function Home() {
                             Welcome to <span className="secondary-color bebas-neue-regular">Rage</span>
                         </h1>
                         <p className="bebas-neue-regular text-lg md:text-xl lg:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                           Push your limits.
+                            Push your limits.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <button className="px-8 py-4 border-2 border-white hover:border-secondary-color text-white font-semibold rounded-lg transition-colors duration-300 transform  shadow-lg">
@@ -52,28 +52,28 @@ export default function Home() {
             {/* Content Section - This will be below the hero */}
             <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary-color text-white">
                 <div className="max-w-6xl mx-auto">
-                     {/* header*/}
-                <div className="text-center mb-12">
-                    <h2 className="bebas-neue-regular text-4xl md:text-5xl font-bold text-white mb-4">
-                        Founders
-                    </h2>
-                    <div className="w-24 h-1 bg-secondary-color mx-auto"></div>
-                </div>
+                    {/* header*/}
+                    <div className="text-center mb-12">
+                        <h2 className="bebas-neue-regular text-4xl md:text-5xl font-bold text-white mb-4">
+                            Founders
+                        </h2>
+                        <div className="w-24 h-1 bg-secondary-color mx-auto"></div>
+                    </div>
                     {/* //header*/}
                 </div>
                 <div className="flex flex-wrap justify-center">
-                    <div className="w-full sm:w-1/2 md:w-1/3 p-4">
+                    <div className="w-full lg:w-1/3 p-4">
                         <div className="bg-black rounded-lg shadow-lg overflow-hidden">
-                            <img src={ashraf} alt="Ashraf Founder" className="w-full h-64 object-cover" />
+                            <img src={ashraf} alt="Ashraf Founder" className="w-full h-96 object-cover" />
                             <div className="p-6">
                                 <h3 className="text-xl font-bold text-white mb-2">Ashraf Adel</h3>
                                 <p className='bebas-neue-regular text-dimmed-secondary-color'>Power national champion</p>
                             </div>
                         </div>
                     </div>
-                    <div className="w-full sm:w-1/2 md:w-1/3 p-4">
+                    <div className="w-full lg:w-1/3 p-4">
                         <div className="bg-black rounded-lg shadow-lg overflow-hidden">
-                            <img src={helmy} alt="Hemly Founder" className="w-full h-64 object-cover" />
+                            <img src={helmy} alt="Hemly Founder" className="w-full h-96 object-cover" />
                             <div className="p-6">
                                 <h3 className="text-xl font-bold text-white mb-2">Ahmed Helmy</h3>
                                 <p className='bebas-neue-regular text-dimmed-secondary-color'>freestyle world champion</p>
@@ -81,8 +81,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </section>
-            {/* our coaches Section */}
+            </section>            {/* our coaches Section */}
             <CoachesSlider />
             {/*our facilities section*/}
             <div className="text-center py-16 px-4 sm:px-6 lg:px-8 bg-primary-color text-white">
@@ -93,8 +92,8 @@ export default function Home() {
                     </h2>
                     <div className="w-24 h-1 bg-secondary-color mx-auto"></div>
                 </div>
-                    {/* //header*/}
-                <div className="flex gap-12 justify-center">
+                {/* //header*/}
+                <div className="flex flex-col lg:flex-row gap-12 justify-center">
                     <div className="">
                         <img className="w-100" src={bars} alt="" />
                     </div>
@@ -102,6 +101,7 @@ export default function Home() {
                         <img className="w-100" src={bars} alt="" />
                     </div>
                 </div>
+                <p className='mt-14 text-lg text-secondary-color bebas-neue-regular'>Train at our professional calisthenics park located at Cairo International Stadium</p>
             </div>
         </div>
     )
