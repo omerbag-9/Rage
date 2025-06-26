@@ -161,7 +161,93 @@ export default function Home() {
 
             </div>
             {/* plans */}
-            
+
+            {/* operating hours*/}
+            <div className="text-center py-16 px-4 sm:px-6 lg:px-8 bg-primary-color text-white">
+                {/* header*/}
+                <div className="text-center mb-12">
+                    <h2 className="bebas-neue-regular text-4xl md:text-5xl font-bold text-white mb-4">
+                        Operating Hours
+                    </h2>
+                    <div className="w-24 h-1 bg-secondary-color mx-auto"></div>
+                </div>
+                {/* //header*/}
+                <div className="w-fit mx-auto">
+                    <h2 className='text-xl md:text-2xl font-semibold text-start'>Morning: 7:00 AM - 10:00 AM <span className='bebas-neue-regular text-sm text-dimmed-secondary-color'>Private Classes Only</span></h2>
+                    <h2 className='text-xl md:text-2xl font-semibold text-start'>Evening: 4:00 PM - 9:00 PM <span className='bebas-neue-regular text-sm text-dimmed-secondary-color'>Group Sessions</span></h2>
+                </div>
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 justify-center p-4 lg:p-8">
+                    <div className="bg-black rounded-lg shadow-lg p-6 w-full max-w-sm mx-auto">
+                        <h2 className='text-secondary-color text-2xl font-bold'>4:00 PM</h2>
+                        <h3 className='text-xl opacity-50'>Group <br />Sessions</h3>
+                    </div>
+                    <div className="bg-black rounded-lg shadow-lg p-6 w-full max-w-sm mx-auto">
+                        <h2 className='text-secondary-color text-2xl font-bold'>5:00 PM</h2>
+                        <h3 className="text-xl opacity-50">Group <br />Sessions</h3>
+                    </div>
+                    <div className="bg-black rounded-lg shadow-lg p-6 w-full max-w-sm mx-auto">
+                        <h2 className='text-secondary-color text-2xl font-bold'>6:00 PM</h2>
+                        <h3 className="text-xl opacity-50">Group <br />Sessions</h3>
+                    </div>
+                    <div className="bg-black rounded-lg shadow-lg p-6 w-full max-w-sm mx-auto">
+                        <h2 className='text-secondary-color text-2xl font-bold'>7:00 PM</h2>
+                        <h3 className="text-xl opacity-50">Group <br />Sessions</h3>
+                    </div>
+                    <div className="bg-black rounded-lg shadow-lg p-6 w-full max-w-sm mx-auto">
+                        <h2 className='text-secondary-color text-2xl font-bold'>8:00 PM</h2>
+                        <h3 className="text-xl opacity-50">Group <br />Sessions</h3>
+                    </div>
+                    <div className="bg-black rounded-lg shadow-lg p-6 w-full max-w-sm mx-auto">
+                        <h2 className='text-secondary-color text-2xl font-bold'>9:00 PM</h2>
+                        <h3 className="text-xl opacity-50">Group <br />Sessions</h3>
+                    </div>
+                </div>
+            </div>
+
+            {/* //operating hours*/}
+
+            {/* Contact Us*/}
+            <div className="text-center py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
+                {/* header*/}
+                <div className="text-center mb-12">
+                    <h2 className="bebas-neue-regular text-4xl md:text-5xl font-bold text-white mb-4">
+                        Contact Us
+                    </h2>
+                    <div className="w-24 h-1 bg-secondary-color mx-auto"></div>
+                </div>
+                {/* //header*/}
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 justify-center">
+                    <div className="bg-primary-color rounded-lg shadow-lg py-6 w-full max-w-sm mx-auto">
+                        <i className="fas fa-phone text-4xl text-secondary-color"></i>
+                        <h2 className='text-2xl my-3 font-semibold'>Phone</h2>
+                        <p className='opacity-50'>01094579550</p>
+                    </div>
+                    <div className="bg-primary-color rounded-lg shadow-lg py-6 w-full max-w-sm mx-auto">
+                        <i className="fas fa-envelope text-4xl text-secondary-color"></i>
+                        <h2 className='text-2xl my-3 font-semibold'>Email</h2>
+                        <p className='opacity-50'>rage.calisthenics@gmail.com</p>
+                    </div>
+                    <div className="bg-primary-color rounded-lg shadow-lg py-6 w-full max-w-sm mx-auto">
+                        <i className="fa-brands fa-instagram text-4xl text-secondary-color"></i>
+                        <h2 className='text-2xl my-3 font-semibold'>Instagram</h2>
+                        <p className='opacity-50'>@rage.egypt</p>
+                    </div>
+                </div>
+                <p className='mt-12 text-secondary-color bebas-neue-regular text-lg'>Located at Cairo International Stadium, Cairo, Egypt</p>
+            </div>
+            {/* // Contact Us*/}
+
+            {/* Follow our journey*/}
+            <div className="text-center py-16 px-4 sm:px-6 lg:px-8 bg-primary-color text-white">
+                {/* header*/}
+                <div className="text-center mb-12">
+                    <h2 className="bebas-neue-regular text-4xl md:text-5xl font-bold text-white mb-4">
+                        Follow Our Journey
+                    </h2>
+                    <div className="w-24 h-1 bg-secondary-color mx-auto"></div>
+                </div>
+                {/* //header*/}            </div>
+            {/* //Follow our journey*/}
         </div>
     )
 }
