@@ -4,6 +4,7 @@ import ashraf from '../../assets/ashraffounder.jpeg'
 import helmy from '../../assets/hemlyfounder.jpeg'
 import bars from '../../assets/bars.jpg'
 import CoachesSlider from '../CoachesSlider/CoachesSlider.jsx';
+import { Link } from 'react-router-dom'
 export default function Home() {
 
     return (
@@ -103,6 +104,64 @@ export default function Home() {
                 </div>
                 <p className='mt-14 text-lg text-secondary-color bebas-neue-regular'>Train at our professional calisthenics park located at Cairo International Stadium</p>
             </div>
+            {/* //our facilities section*/}
+
+
+            {/* plans */}
+            <div className="text-center py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
+                {/* header*/}
+                <div className="text-center mb-12">
+                    <h2 className="bebas-neue-regular text-4xl md:text-5xl font-bold text-white mb-4">
+                        Book From Our Plans
+                    </h2>
+                    <div className="w-24 h-1 bg-secondary-color mx-auto"></div>
+                </div>
+                {/* //header*/}
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 justify-center p-4 lg:p-8">
+                    {/* GROUP Photo */}
+                    <Link to={'/plans'}>
+                        <div className="relative p-2 lg:p-4 hover:scale-105 ">
+                            <div className="relative w-full max-w-sm lg:w-96 h-48 lg:h-full overflow-hidden rounded-lg shadow-lg mx-auto">
+                                {/* Background gradient as photo placeholder */}
+                                <div className="w-full h-full">
+                                    <img className='w-full h-full object-cover' src={bars} alt="" />
+                                </div>
+                                {/* Blur overlay */}
+                                <div className="absolute inset-0 backdrop-blur-md bg-black bg-opacity-20"></div>
+                                {/* Centered text */}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <h2 className="text-2xl lg:text-4xl font-bold text-white tracking-wider drop-shadow-lg">
+                                        GROUP
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    {/* PRIVATE Photo */}
+
+                    <Link to={'/plans'}>
+                        <div className="relative p-2 lg:p-4 hover:scale-105 ">
+                            <div className="relative w-full max-w-sm lg:w-96 h-48 lg:h-full overflow-hidden rounded-lg shadow-lg mx-auto">
+                                {/* Background gradient as photo placeholder */}
+                                <div className="w-full h-full">
+                                    <img className='w-full h-full object-cover' src={bars} alt="" />
+                                </div>
+                                {/* Blur overlay */}
+                                <div className="absolute inset-0 backdrop-blur-md bg-black bg-opacity-20"></div>
+                                {/* Centered text */}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <h2 className="text-2xl lg:text-4xl font-bold text-white tracking-wider drop-shadow-lg">
+                                        PRIVATE
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+
+            </div>
+            {/* plans */}
+            
         </div>
     )
 }

@@ -6,7 +6,7 @@ import '@splidejs/react-splide/css/core';
 import ashraf from '../../assets/ashraffounder.jpeg';
 import helmy from '../../assets/hemlyfounder.jpeg';
 import ahmed from '../../assets/ahmedyehia.png';
-import menna from '../../assets/menna.png';
+import maged from '../../assets/maged.png';
 
 const coaches = [
     {
@@ -29,9 +29,9 @@ const coaches = [
     },
     {
         id: 4,
-        name: "Menna",
-        photo: menna,
-        instagram: "https://www.instagram.com/mennahshahin"
+        name: "Mohamed Maged",
+        photo: maged,
+        instagram: "https://www.instagram.com/mohamed.maged"
     }
 ];
 
