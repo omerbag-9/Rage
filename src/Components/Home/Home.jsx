@@ -246,7 +246,8 @@ export default function Home() {
                     </h2>
                     <div className="w-24 h-1 bg-secondary-color mx-auto"></div>
                 </div>
-                {/* //header*/}            </div>
+                {/* //header*/}
+            </div>
             {/* //Follow our journey*/}
         </div>
     )

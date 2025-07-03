@@ -4,10 +4,11 @@ import Home from './Components/Home/Home'
 import Layout from './Components/Layout/Layout'
 import Signup from './Components/Signup/Signup'
 import Login from './Components/Login/Login'
+import { AuthProvider } from './Context/AuthContext'
 
 
 
-  let routers = createBrowserRouter([
+let routers = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
@@ -17,11 +18,13 @@ import Login from './Components/Login/Login'
       { path: '/login', element: <Login /> },
     ]
   },
-  ])
+])
 
 export default function App() {
 
   return (
-    <RouterProvider router={routers} />
+    <AuthProvider>
+      <RouterProvider router={routers} />
+    </AuthProvider>
   )
 }

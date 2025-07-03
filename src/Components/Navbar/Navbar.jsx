@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import yellowLogo from '../../assets/white-yellow.png'
 import Cookies from 'js-cookie';
 import cali2 from '../../assets/calisthenicsuser2.jpg'
-
+import { AuthContext } from '../../Context/AuthContext';
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+    const { user, setUser } = useContext(AuthContext);
     const token = Cookies.get('token');
-    
+
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
@@ -60,7 +61,7 @@ export default function Navbar() {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-10">
             <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-                
+
                 {/* Mobile Menu Button - Left on mobile */}
                 <button
                     id="mobile-menu-button"
@@ -88,7 +89,7 @@ export default function Navbar() {
                 <div className="absolute left-1/2 transform -translate-x-1/2 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:order-2">
                     {/* <span className="text-2xl secondary-color font-bold drop-shadow-lg">Rage</span> */}
                     <Link to={"/"}>
-                    <img className='w-28' src={yellowLogo} alt="" />
+                        <img className='w-28' src={yellowLogo} alt="" />
                     </Link>
                 </div>
 
@@ -124,39 +125,35 @@ export default function Navbar() {
                         // Authenticated User Section
                         <>
                             {/* User name - hidden on mobile, visible on tablet+ */}
-                            <span className="hidden md:block text-white text-sm drop-shadow-md">John Doe</span>
-                            
+                            <span className="hidden md:block text-white text-sm drop-shadow-md">{user.firstName + " " + user.lastName}</span>
+
                             {/* User avatar button */}
-                            <button 
+                            <button
                                 id="user-menu-button"
                                 onClick={toggleUserDropdown}
-                                type="button" 
-                                className="flex text-sm bg-gray-800 bg-opacity-70 rounded-full focus:ring-4 focus:ring-white focus:ring-opacity-30 hover:ring-4 hover:ring-white hover:ring-opacity-20 transition-all duration-200 backdrop-blur-sm" 
+                                type="button"
+                                className="flex text-sm bg-gray-800 bg-opacity-70 rounded-full focus:ring-4 focus:ring-white focus:ring-opacity-30 hover:ring-4 hover:ring-white hover:ring-opacity-20 transition-all duration-200 backdrop-blur-sm"
                                 aria-expanded={isUserDropdownOpen}
                             >
                                 <span className="sr-only">Open user menu</span>
                                 <img className="w-8 h-8 rounded-full" src={cali2} alt="user photo" />
                             </button>
-                            
+
                             {/* User Dropdown Menu */}
                             {isUserDropdownOpen && (
-                                <div 
+                                <div
                                     id="user-dropdown"
                                     className="absolute right-0 top-12 z-50 w-48 text-base list-none bg-white bg-opacity-95 backdrop-blur-md divide-y divide-gray-100 rounded-lg shadow-lg border border-gray-200"
                                 >
                                     <div className="px-4 py-3">
-                                        <span className="block text-sm text-gray-900 font-medium">John Doe</span>
-                                        <span className="block text-sm text-gray-500 truncate">john@example.com</span>
+                                        <span className="block text-sm text-gray-900 font-medium">{user.firstName + " " + user.lastName}</span>
+                                        <span className="block text-sm text-gray-500 truncate">{user.email}</span>
                                     </div>
                                     <ul className="py-2">
                                         <li>
-                                            <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Dashboard</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Settings</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Earnings</a>
+                                            <Link to={"/profile"} onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">
+                                                Profile
+                                            </Link>
                                         </li>
                                         <li>
                                             <a href="#" onClick={signout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200 border-t border-gray-100">Sign out</a>
@@ -168,14 +165,14 @@ export default function Navbar() {
                     ) : (
                         // Unauthenticated User Section - Sign In/Sign Up Buttons (Hidden on mobile)
                         <>
-                            <NavLink 
-                                to="/login" 
+                            <NavLink
+                                to="/login"
                                 className="hidden lg:block px-4 py-2 text-sm bg-primary-color rounded-lg"
                             >
                                 Sign In
                             </NavLink>
-                            <NavLink 
-                                to="/signup" 
+                            <NavLink
+                                to="/signup"
                                 className="hidden lg:block px-4 py-2 text-sm bg-primary-color text-secondary-color rounded-lg "
                             >
                                 Sign Up
@@ -187,7 +184,7 @@ export default function Navbar() {
 
             {/* Mobile Navigation Menu */}
             {isMobileMenuOpen && (
-                <div 
+                <div
                     id="mobile-menu"
                     className="lg:hidden absolute top-full left-0 right-0 z-40 bg-black bg-opacity-90 backdrop-blur-md border-t border-gray-700 border-opacity-50"
                 >
@@ -239,22 +236,20 @@ export default function Navbar() {
                                 </NavLink>
                             </li>
                         </ul>
-                        
+
                         {/* Mobile user section - conditional */}
                         {token ? (
                             // Authenticated mobile user info
                             <div className="pt-4 mt-4 border-t border-gray-700 border-opacity-50">
                                 <div className="flex items-center space-x-3 px-3 py-2">
-                                    <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
+                                    <img className="w-8 h-8 rounded-full" src={cali2} alt="user photo" />
                                     <div>
-                                        <span className="block text-sm text-white font-medium">John Doe</span>
-                                        <span className="block text-xs text-gray-300">john@example.com</span>
+                                        <span className="block text-sm text-white font-medium">{user.firstName + " " + user.lastName}</span>
+                                        <span className="block text-xs text-gray-300">{user.email}</span>
                                     </div>
                                 </div>
                                 <div className="mt-2 space-y-1">
-                                    <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Dashboard</a>
-                                    <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Settings</a>
-                                    <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Earnings</a>
+                                    <Link to={"/profile"} onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Profile</Link>
                                     <a href="#" onClick={signout} className="block px-3 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Sign out</a>
                                 </div>
                             </div>
