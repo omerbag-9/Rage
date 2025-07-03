@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import yellowLogo from '../../assets/white-yellow.png'
 import Cookies from 'js-cookie';
+import cali2 from '../../assets/calisthenicsuser2.jpg'
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -132,7 +133,7 @@ export default function Navbar() {
                                 aria-expanded={isUserDropdownOpen}
                             >
                                 <span className="sr-only">Open user menu</span>
-                                <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
+                                <img className="w-8 h-8 rounded-full" src={cali2} alt="user photo" />
                             </button>
                             
                             {/* User Dropdown Menu */}
