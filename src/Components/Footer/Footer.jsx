@@ -1,5 +1,6 @@
 import React from 'react';
 import whiteLogo from '../../assets/white.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -21,10 +22,11 @@ const Footer = () => {
             <div className="lg:col-span-2">
               <div className="flex flex-col sm:flex-row sm:items-center mb-6">
                 <div className="mb-4 sm:mb-0 sm:mr-4">
+                  <Link to={"/"}>
                   <img src={whiteLogo} className='w-20 sm:w-24' alt="RAGE Logo" />
+                  </Link>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-secondary-color">RAGE</h2>
                   <p className="text-sm text-gray-400">Calisthenics Training</p>
                 </div>
               </div>
