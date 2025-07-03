@@ -156,7 +156,7 @@ export default function Navbar() {
                                             <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Earnings</a>
                                         </li>
                                         <li>
-                                            <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200 border-t border-gray-100">Sign out</a>
+                                            <a href="#" onClick={signout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200 border-t border-gray-100">Sign out</a>
                                         </li>
                                     </ul>
                                 </div>
