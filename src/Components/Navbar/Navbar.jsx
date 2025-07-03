@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import yellowLogo from '../../assets/white-yellow.png'
 import Cookies from 'js-cookie';
 import cali2 from '../../assets/calisthenicsuser2.jpg'
@@ -87,7 +87,9 @@ export default function Navbar() {
                 {/* Brand - Center on all screens */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:order-2">
                     {/* <span className="text-2xl secondary-color font-bold drop-shadow-lg">Rage</span> */}
+                    <Link to={"/"}>
                     <img className='w-28' src={yellowLogo} alt="" />
+                    </Link>
                 </div>
 
                 {/* Desktop Navigation Links - Left side on large screens */}
