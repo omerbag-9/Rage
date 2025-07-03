@@ -2,6 +2,8 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Components/Home/Home'
 import Layout from './Components/Layout/Layout'
+import Signup from './Components/Signup/Signup'
+import Login from './Components/Login/Login'
 
 
 
@@ -11,6 +13,8 @@ import Layout from './Components/Layout/Layout'
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
+      { path: '/signup', element: <Signup /> },
+      { path: '/login', element: <Login /> },
     ]
   },
   ])

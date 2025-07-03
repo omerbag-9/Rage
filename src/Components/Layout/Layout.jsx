@@ -1,12 +1,20 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 
 export default function Layout() {
-    return <>
-        <Navbar />
-        <Outlet />
-        <Footer />
-    </>
+    const location = useLocation();
+    
+    // Define routes where footer should be hidden
+    const hideFooterRoutes = ['/login', '/signup'];
+    const shouldHideFooter = hideFooterRoutes.includes(location.pathname);
+
+    return (
+        <>
+            <Navbar />
+            <Outlet />
+            {!shouldHideFooter && <Footer />}
+        </>
+    )
 }

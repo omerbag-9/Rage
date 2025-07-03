@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import yellowLogo from '../../assets/white-yellow.png'
+import Cookies from 'js-cookie';
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-
+    const token = Cookies.get('token');
+    
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
@@ -30,6 +32,11 @@ export default function Navbar() {
         if (!e.target.closest('#mobile-menu-button') && !e.target.closest('#mobile-menu')) {
             setIsMobileMenuOpen(false);
         }
+    };
+
+    const signout = () => {
+        Cookies.remove('token');
+        window.location.href = '/login';
     };
 
     React.useEffect(() => {
@@ -92,17 +99,12 @@ export default function Navbar() {
                         </li>
                         <li>
                             <NavLink to="/about" className={navLinkClass}>
-                                About
+                                About Us
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/services" className={navLinkClass}>
-                                Services
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/pricing" className={navLinkClass}>
-                                Pricing
+                            <NavLink to="/plan" className={navLinkClass}>
+                                Plans
                             </NavLink>
                         </li>
                         <li>
@@ -113,48 +115,69 @@ export default function Navbar() {
                     </ul>
                 </div>
 
-                {/* User Section - Right side */}
+                {/* Conditional Right Section - User Section or Auth Buttons */}
                 <div className="flex items-center lg:order-3 space-x-3 relative">
-                    {/* User name - hidden on mobile, visible on tablet+ */}
-                    <span className="hidden md:block text-white text-sm drop-shadow-md">John Doe</span>
-                    
-                    {/* User avatar button */}
-                    <button 
-                        id="user-menu-button"
-                        onClick={toggleUserDropdown}
-                        type="button" 
-                        className="flex text-sm bg-gray-800 bg-opacity-70 rounded-full focus:ring-4 focus:ring-white focus:ring-opacity-30 hover:ring-4 hover:ring-white hover:ring-opacity-20 transition-all duration-200 backdrop-blur-sm" 
-                        aria-expanded={isUserDropdownOpen}
-                    >
-                        <span className="sr-only">Open user menu</span>
-                        <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
-                    </button>
-                    
-                    {/* User Dropdown Menu */}
-                    {isUserDropdownOpen && (
-                        <div 
-                            id="user-dropdown"
-                            className="absolute right-0 top-12 z-50 w-48 text-base list-none bg-white bg-opacity-95 backdrop-blur-md divide-y divide-gray-100 rounded-lg shadow-lg border border-gray-200"
-                        >
-                            <div className="px-4 py-3">
-                                <span className="block text-sm text-gray-900 font-medium">John Doe</span>
-                                <span className="block text-sm text-gray-500 truncate">john@example.com</span>
-                            </div>
-                            <ul className="py-2">
-                                <li>
-                                    <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Earnings</a>
-                                </li>
-                                <li>
-                                    <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200 border-t border-gray-100">Sign out</a>
-                                </li>
-                            </ul>
-                        </div>
+                    {token ? (
+                        // Authenticated User Section
+                        <>
+                            {/* User name - hidden on mobile, visible on tablet+ */}
+                            <span className="hidden md:block text-white text-sm drop-shadow-md">John Doe</span>
+                            
+                            {/* User avatar button */}
+                            <button 
+                                id="user-menu-button"
+                                onClick={toggleUserDropdown}
+                                type="button" 
+                                className="flex text-sm bg-gray-800 bg-opacity-70 rounded-full focus:ring-4 focus:ring-white focus:ring-opacity-30 hover:ring-4 hover:ring-white hover:ring-opacity-20 transition-all duration-200 backdrop-blur-sm" 
+                                aria-expanded={isUserDropdownOpen}
+                            >
+                                <span className="sr-only">Open user menu</span>
+                                <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
+                            </button>
+                            
+                            {/* User Dropdown Menu */}
+                            {isUserDropdownOpen && (
+                                <div 
+                                    id="user-dropdown"
+                                    className="absolute right-0 top-12 z-50 w-48 text-base list-none bg-white bg-opacity-95 backdrop-blur-md divide-y divide-gray-100 rounded-lg shadow-lg border border-gray-200"
+                                >
+                                    <div className="px-4 py-3">
+                                        <span className="block text-sm text-gray-900 font-medium">John Doe</span>
+                                        <span className="block text-sm text-gray-500 truncate">john@example.com</span>
+                                    </div>
+                                    <ul className="py-2">
+                                        <li>
+                                            <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Settings</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200">Earnings</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" onClick={closeUserDropdown} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-opacity-70 transition-colors duration-200 border-t border-gray-100">Sign out</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        // Unauthenticated User Section - Sign In/Sign Up Buttons (Hidden on mobile)
+                        <>
+                            <NavLink 
+                                to="/login" 
+                                className="hidden lg:block px-4 py-2 text-sm bg-primary-color rounded-lg"
+                            >
+                                Sign In
+                            </NavLink>
+                            <NavLink 
+                                to="/signup" 
+                                className="hidden lg:block px-4 py-2 text-sm bg-primary-color text-secondary-color rounded-lg "
+                            >
+                                Sign Up
+                            </NavLink>
+                        </>
                     )}
                 </div>
             </div>
@@ -214,22 +237,43 @@ export default function Navbar() {
                             </li>
                         </ul>
                         
-                        {/* Mobile user info */}
-                        <div className="pt-4 mt-4 border-t border-gray-700 border-opacity-50">
-                            <div className="flex items-center space-x-3 px-3 py-2">
-                                <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
-                                <div>
-                                    <span className="block text-sm text-white font-medium">John Doe</span>
-                                    <span className="block text-xs text-gray-300">john@example.com</span>
+                        {/* Mobile user section - conditional */}
+                        {token ? (
+                            // Authenticated mobile user info
+                            <div className="pt-4 mt-4 border-t border-gray-700 border-opacity-50">
+                                <div className="flex items-center space-x-3 px-3 py-2">
+                                    <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
+                                    <div>
+                                        <span className="block text-sm text-white font-medium">John Doe</span>
+                                        <span className="block text-xs text-gray-300">john@example.com</span>
+                                    </div>
+                                </div>
+                                <div className="mt-2 space-y-1">
+                                    <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Dashboard</a>
+                                    <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Settings</a>
+                                    <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Earnings</a>
+                                    <a href="#" onClick={signout} className="block px-3 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Sign out</a>
                                 </div>
                             </div>
-                            <div className="mt-2 space-y-1">
-                                <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Dashboard</a>
-                                <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Settings</a>
-                                <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Earnings</a>
-                                <a href="#" onClick={closeMobileMenu} className="block px-3 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200">Sign out</a>
+                        ) : (
+                            // Unauthenticated mobile auth buttons
+                            <div className="pt-4 mt-4 border-t border-gray-700 border-opacity-50 space-y-2">
+                                <NavLink
+                                    to="/login"
+                                    onClick={closeMobileMenu}
+                                    className="block px-3 py-2 text-sm text-white hover:text-gray-200 hover:bg-white hover:bg-opacity-10 rounded transition-colors duration-200"
+                                >
+                                    Sign In
+                                </NavLink>
+                                <NavLink
+                                    to="/signup"
+                                    onClick={closeMobileMenu}
+                                    className="block px-3 py-2 text-sm text-white rounded  transition-all duration-200"
+                                >
+                                    Sign Up
+                                </NavLink>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             )}
